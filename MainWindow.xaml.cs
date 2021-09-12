@@ -28,7 +28,7 @@ namespace PasswordManager
         {
             InitializeComponent();
             this.data = new Data(this);
-            utils = new Utils(this, data);
+            this.utils = new Utils(this, data);
             this.utils.InitLogins();
         }
 
@@ -36,25 +36,24 @@ namespace PasswordManager
         {
             if (LoginList.Items.Contains(NameBox.Text))
             {
-                utils.printWarining("This login already exists!", 3500);
+                this.utils.printWarining("This login already exists!", 3500);
                 return;
             }
 
-            NewLoginWarningLabel.Content = "Enter all informations!";
             if (NameBox.Text == "" || UsernameBox.Text == "" || Password.Password == "")
             {
-                utils.printWarining("One of the entry is empty!", 3500);
+                this.utils.printWarining("One of the entry is empty!", 3500);
                 return;
             }
 
             this.data.WriteNewLogin(NameBox.Text, UsernameBox.Text, Password.Password);
-            utils.AddToLoginList(new Login(NameBox.Text, UsernameBox.Text, Password.Password).name);
-            utils.CloseNewLogin();
+            this.utils.AddToLoginList(new Login(NameBox.Text, UsernameBox.Text, Password.Password).name);
+            this.utils.CloseNewLogin();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            utils.CloseNewLogin();
+            this.utils.CloseNewLogin();
         }
 
         private void NewLoginButton_Click(object sender, RoutedEventArgs e)
@@ -73,7 +72,7 @@ namespace PasswordManager
                 Login login = new Login(LoginList.SelectedItem.ToString()).GetObjectByName();
 
                 if (login != null)
-                    data.RemoveLogin(login.name);
+                    this.data.RemoveLogin(login.name);
             }
         }
 

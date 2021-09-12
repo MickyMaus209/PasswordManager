@@ -21,11 +21,11 @@ namespace PasswordManager.scripts
 
         public void CloseNewLogin()
         {
-            mainWindow.MainGrid.IsEnabled = true;
-            mainWindow.NewLoginGrid.Visibility = Visibility.Hidden;
-            mainWindow.UsernameBox.Text = "";
-            mainWindow.NameBox.Text = "";
-            mainWindow.Password.Password = "";
+            this.mainWindow.MainGrid.IsEnabled = true;
+            this.mainWindow.NewLoginGrid.Visibility = Visibility.Hidden;
+            this.mainWindow.UsernameBox.Text = "";
+            this.mainWindow.NameBox.Text = "";
+            this.mainWindow.Password.Password = "";
         }
 
         public void InitLogins()
@@ -41,7 +41,7 @@ namespace PasswordManager.scripts
 
             Login.logins.ForEach(login =>
             {
-                AddToLoginList(login.name);
+                this.AddToLoginList(login.name);
             });
         }
 
@@ -53,9 +53,9 @@ namespace PasswordManager.scripts
         public async void printWarining(string text, int time)
         {
             this.mainWindow.NewLoginWarningLabel.Content = text;
-            mainWindow.NewLoginWarningLabel.Visibility = Visibility.Visible;
+            this.mainWindow.NewLoginWarningLabel.Visibility = Visibility.Visible;
             await Task.Delay(time);
-            mainWindow.NewLoginWarningLabel.Visibility = Visibility.Hidden;
+            this.mainWindow.NewLoginWarningLabel.Visibility = Visibility.Hidden;
         }
     }
 }

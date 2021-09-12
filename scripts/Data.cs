@@ -73,10 +73,9 @@ namespace PasswordManager.scripts
                 sw.Flush();
                 sw.Close();
             }
-
+            Login l = new Login(name).GetObjectByName();
+            Login.logins.Remove(l);
             Login.login.Remove(name);
-            Login lo = new Login(name).GetObjectByName();
-            Login.logins.Remove(lo);
             this.mainWindow.LoginList.Items.Remove(name);
         }
     }
